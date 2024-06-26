@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: SpringConfigWithDBAndChainOfFilters
+  main:
+    allow-circular-references: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+    hikari:
+      pool-name: HikariPool
+      maximum-pool-size: 10
+      connection-timeout: 30000 # Maximum Time a client will wait in milliseconds to get a Connection from Connection Pool
+      idle-timeout: 60000 # Maximum Time a Connection Object can remain idle in the Connection Pool
+      max-lifetime: 1800000 # Maximum Life of a Connection Object in Connection Pool
+      auto-commit: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+
+server:
+  servlet:
+    context-path: /filterChain
+  port: 9905
+
+security:
+  jwt:
+    secret-key: 3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b
+    expiration-time: 86400000

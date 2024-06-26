@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: springBasicAuth
+server:
+  port: 9901
+  servlet:
+    context-path: /services
+
+platform:
+  admin:
+    userName: adminUser
+    password: admin@9939
+  normal:
+    userName: NormalUser
+    password: normal@9939
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
